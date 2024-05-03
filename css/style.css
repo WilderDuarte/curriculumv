@@ -50,6 +50,7 @@ nav{
 .enlaces-header{
     font-weight: 300;
     margin: auto;
+    transition: all ease-in-out .6s;
 }
 
 .nav .enlaces-header a{
@@ -80,7 +81,6 @@ nav{
 .hamburguer > i {
     font-size: 25px;
     line-height: 80px;
-    color: #d03d3d;
 }
 
 
