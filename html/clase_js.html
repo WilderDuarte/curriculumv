@@ -6,6 +6,13 @@
     <title>Aprendiendo Js</title>
 </head>
 <body onload="load_page()">
+
+    <div>
+        <input type="text" id="hour_system" disabled>
+        <input type="text" id="name_search" size="30" disabled >
+        <button onclick="search()">BUSCAR</button>
+    </div>
+    <br><br>
     <div> 
         <div>
             <label for="name">Name:</label>
@@ -14,6 +21,14 @@
         <div>
             <label for="last_name">Lastname:</label>
             <input type="text" id="last_name" placeholder="Ingrese su Apellido">
+        </div>
+        <div>
+            <label for="pass_one">Ingrese contraseña</label>
+            <input type="password" id="pass_one" placeholder="Ingrese su contraseña">
+        </div>
+        <div>
+            <label for="pass_two">Repita su contraseña</label>
+            <input type="password" id="pass_two" placeholder="Repita su contraseña">
         </div>
         <div>
             <button id="send" onclick="send_form()">ENVIAR</button>

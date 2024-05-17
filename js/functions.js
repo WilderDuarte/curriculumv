@@ -44,30 +44,62 @@ function load_page(){
 
     document.getElementById("text").innerText = "El array a calcular es: "+array_num;
     document.getElementById("impresion").value = array_num;
+    document.getElementById("name_search").value = nombre_form;
+
+    let hour_system = new Date();
+    let dia = hour_system.getDay();
+    console.log(hour_system.getDate());
+    console.log("Día " + hour_system.getDay());
+    console.log(hour_system.getFullYear());
+    console.log(hour_system.getHours());
+    console.log(hour_system.getMilliseconds());
+    console.log(hour_system.getMinutes());
+    console.log(hour_system.getMonth());
+    console.log(hour_system.getSeconds());
+    console.log(hour_system.getTime());
+
+    let dias = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+    for(let i=0;i<dias.length;i++){
+        console.log(dias[dia]);
+    }
+
+    console.log("Hoy es: " + dias[dia]);
+    let dia_mes = hour_system.getMonth() + 1;
+    console.log(hour_system.getDate()+"/"+dia_mes+"/"+hour_system.getFullYear());
+
+    document.getElementById("hour_system").value = hour_system;
 }
 
 function send_form(){
     let name        = document.getElementById("name").value;
     let last_name   = document.getElementById("last_name").value;
-    if(name.length == 0 || last_name.length == 0){
+    let pass_one    = document.getElementById("pass_one").value;
+    let pass_two    = document.getElementById("pass_two").value;
+    if(name.length == 0 || last_name.length == 0 || pass_one.length == 0 || pass_two.length == 0){
         Swal.fire({
             title: "Cajas de Texto vacías",
             text: "Alguna de las cajas de texto se encuentra vacía",
             icon: "error"
         });
-        if(name.length == 0){
-            document.getElementById("name").style.border = "2px solid red"
-        }
-        else{
-            document.getElementById("name").style.border = "2px solid green"
-        }
-        if(last_name.length == 0){
-            document.getElementById("last_name").style.border = "2px solid red"
-        }
-        else{
-            document.getElementById("last_name").style.border = "2px solid green"
-        }
-        
+        // if(name.length == 0){
+        //     document.getElementById("name").style.border = "2px solid red"
+        // }
+        // else{
+        //     document.getElementById("name").style.border = "2px solid green"
+        // }
+        // if(last_name.length == 0){
+        //     document.getElementById("last_name").style.border = "2px solid red"
+        // }
+        // else{
+        //     document.getElementById("last_name").style.border = "2px solid green"
+        // }        
+    } 
+    else if(pass_one != pass_two){
+        Swal.fire({
+            title: "Sus contraseñas no son iguales",
+            text: "Por favor valide sus credenciales",
+            icon: "error"
+        });
     }
     else{
         document.getElementById("print").innerText = "Su nombre es: " + name +" "+ last_name;
@@ -137,10 +169,15 @@ function eliminar(){
 
 function agregar(){
     let num = document.getElementById("num").value;
-    let array_add = array_numerico.push(num);
-    console.log(array_add);
-    console.log(array_numerico);
-    document.getElementById("impresion").value = array_numerico;
+    if(isNaN(num) == true){
+        Swal.fire("Solo se aceptan números");
+    }
+    else{
+        let array_add = array_numerico.push(num);
+        console.log(array_add);
+        console.log(array_numerico);
+        document.getElementById("impresion").value = array_numerico;
+    }
 }
 
 function reves(){
@@ -153,3 +190,28 @@ function limpiar(){
     document.getElementById("last_name").value = "";
     document.getElementById("result").innerText = "";
 }
+
+
+
+var nombre_form = "Wilder Andrés Duarte Neira";
+
+function search(){
+    let nombre_buscar = document.getElementById("name_search").value;
+    //Swal.fire(nombre_buscar.toLowerCase()); // toUpperCase() Mayus
+    // Swal.fire({
+    //     title: nombre_buscar.toLowerCase(),
+    //     text: "Alguna de las cajas de texto se encuentra vacía",
+    //     icon: "error"
+    // });
+    // Swal.fire(nombre_buscar.charAt(0));
+    // let word = nombre_buscar.indexOf('e');
+    // let word = nombre_buscar.lastIndexOf('e');
+    // let word = nombre_buscar.substring(5,15);
+    let word = nombre_buscar.split("");
+    Swal.fire(word+"");
+    console.log(word);
+    let word_com = word.join("");
+    console.log(word_com);
+}
+
+
